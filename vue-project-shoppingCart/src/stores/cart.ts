@@ -1,38 +1,38 @@
-import {defineStore} from 'pinia';
-import {ref, computed} from 'vue';
+import { defineStore } from 'pinia';
+import { ref, computed } from 'vue';
 
-interface Product{ 
-    id:number;
-    name:string;
-    price:number;
+interface Product {
+  id: number;
+  name: string;
+  price: number;
 }
 
-export const useCartStore = defineStore('cart', ()=>{
+export const useCartStore = defineStore('cart', () => {
+  const cartItems = ref<Product[]>([]);
 
- const cartItems = ref<Product[]>([]);
-
- const addToCart = (product:Product) => {
+  // Add a product to the cart
+  const addToCart = (product: Product) => {
     cartItems.value.push(product);
- };
+  };
 
-const removeFromCart = (productId:number)=>{
-    cartItems.value = cartItems.value.filter(item=>item.id !==productId);
-};
+  // Remove a product from the cart by ID
+  const removeFromCart = (productId: number) => {
+    cartItems.value = cartItems.value.filter(item => item.id !== productId);
+  };
 
-const total = computed(()=> 
+  // Computed property for total price
+  const total = computed(() =>
     cartItems.value.reduce((acc, item) => acc + item.price, 0)
-);
+  );
 
-const cartCount = computed(()=> cartItems.value.length);
+  // Computed property for cart item count
+  const cartCount = computed(() => cartItems.value.length);
 
-return {
-    
+  return {
     cartItems,
     addToCart,
     removeFromCart,
     total,
-    cartCount
-}
-
-
+    cartCount,
+  };
 });

@@ -1,24 +1,18 @@
-
 <template>
   <div id="app">
-     <ProductList />
-     <ShoppingCart />
+    <ProductList />
+    <ShoppingCart />
   </div>
-
 </template>
+
 <script setup lang="ts">
-
-import ProductList from './components/ProductList.vue'
-import ShoppingCart from './components/ShoppingCart.vue'
-
+import ProductList from './components/ProductList.vue';
+import ShoppingCart from './components/ShoppingCart.vue';
 </script>
 
-
-
-
-<style scoped>
+<style>
 #app {
-  font-family: 'Avenir', Arial, Helvetica, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
